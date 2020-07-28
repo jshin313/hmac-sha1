@@ -1,6 +1,6 @@
 # Yet Another HMAC Implementation
 ### Description
-An implemention of HMAC using SHA-1 I made for learning purposes.
+An implemention of HMAC using SHA-1 I made for the TI-84+ CE or a regular computer, made primarily for learning purposes.
 
 I had to make an HMAC implementation for a special platform with limited specs (TI-84+ CE), so OpenSSL wasn't an option.
 The teeny-sha1 provided a nice, small program for sha1, which I expanded to create a small program for hmac.
@@ -26,4 +26,4 @@ $ ./hmac.py
 ```
 
 ### Credits
-I didn't implement sha-1 and instead used the [teeny-sha1 implementation](https://github.com/CTrabant/teeny-sha1/) for the hmac implemented in c.
+I didn't implement SHA-1 and instead used the [teeny-sha1 implementation](https://github.com/CTrabant/teeny-sha1/) for the c version.
