@@ -7,11 +7,17 @@ The teeny-sha1 provided a nice, small program for sha1, which I expanded to crea
 Note: The hmac implementation hasn't been thoroughly tested.
 
 ### Build and Run
+#### C
 ```console
-make
-./hmac
+$ cd c
+$ make
+$ ./hmac
 0xb34ceac4516ff23a143e61d79dfa7a4fbe5f266
-./hmac.py
+```
+#### Python3
+```console
+$ cd python3
+$ ./hmac.py
 0xb34ceac4516ff23a143e61d79dfa7a4fbe5f266
 ```
 
