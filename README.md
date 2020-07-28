@@ -1,10 +1,14 @@
 # Yet Another HMAC Implementation
-An implemention of HMAC using SHA-1 I made for learning purposes
+### Description
+An implemention of HMAC using SHA-1 I made for learning purposes.
 
-I had to make an HMAC implementation for a special platform with limited specs, so OpenSSL wasn't an option.
+I had to make an HMAC implementation for a special platform with limited specs (TI-84+ CE), so OpenSSL wasn't an option.
 The teeny-sha1 provided a nice, small program for sha1, which I expanded to create a small program for hmac.
 
-Note: The hmac implementation hasn't been thoroughly tested.
+Note: The hmac implementation hasn't been thoroughly tested. It's also probably slower than the other ones.
+
+Build the c program using the makefile if you're using this on a regular computer.
+If you want to run the c program on a TI-84+ CE, use the LLVM based compiler for the CE (TI-Planet has one).
 
 ### Build and Run
 #### C

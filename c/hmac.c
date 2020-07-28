@@ -7,14 +7,43 @@
 #define BLOCKSIZE 64
 #define DIGESTSIZE 20
 
+// If compiling for regular computer (like x86 or x86-64 based)
+#ifdef REGULAR
 void printArray(uint8_t* array, size_t length)
 {
     int i;
     printf("0x");
-    for (i = 0; i < DIGESTSIZE; i++)
+    for (i = 0; i < length; i++)
         printf("%x", array[i]);
     putchar('\n');
 }
+#endif
+// If compiling for TI-84+ CE 
+#ifndef REGULAR
+#include <tice.h>
+static void putChar(char c) {
+    static char str[2];
+    str[0] = c;
+    os_PutStrFull(str);
+}
+static void putNibHex(unsigned char x) {
+    x &= 0xF;
+    putChar(x < 10 ? '0' + x : 'A' + x - 10);
+}
+static void putByteHex(unsigned char x) {
+    putNibHex(x >> 4);
+    putNibHex(x >> 0);
+}
+
+static void printArray(uint8_t* array, size_t length)
+{
+    int i;
+    for (i = 0; i < length; i++)
+        putByteHex(array[i]);
+
+}
+#endif
+
 
 int hmac_sha1(uint8_t* digest, uint8_t* key, uint8_t* message, size_t keylen, size_t msglen)
 {
@@ -65,15 +94,10 @@ int hmac_sha1(uint8_t* digest, uint8_t* key, uint8_t* message, size_t keylen, si
 
 int main(void)
 {
-    /* char * data = "abc"; */
-    /* int databytes = strlen(data); */
-    /* uint8_t digest[20]; */
-    /* sha1digest(digest, (uint8_t *)data, databytes); */
+#ifndef REGULAR
+    os_ClrHome();
+#endif
 
-    /* printf("0x"); */
-    /* for (i = 0; i < DIGESTSIZE; i++) */
-    /*     printf("%x", digest[i]); */
-    /* putchar('\n'); */
     uint8_t digest[20];
 
     char * msg = "hello";
@@ -82,6 +106,10 @@ int main(void)
     hmac_sha1(digest, key, msg, strlen(key), strlen(msg));
     printArray(digest, DIGESTSIZE);
     // The result should be 0xb34ceac4516ff23a143e61d79dfa7a4fbe5f266
+
+#ifndef REGULAR
+    while (!os_GetCSC());
+#endif
   
 }
 
