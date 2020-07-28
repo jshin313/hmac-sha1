@@ -1,6 +1,11 @@
 # Yet Another HMAC Implementation
 An implemention of HMAC using SHA-1 I made for learning purposes
 
+I had to make an HMAC implementation for a special platform with limited specs, so OpenSSL wasn't an option.
+The teeny-sha1 provided a nice, small program for sha1, which I expanded to create a small program for hmac.
+
+Note: The hmac implementation hasn't been thoroughly tested.
+
 ### Build and Run
 ```console
 make
