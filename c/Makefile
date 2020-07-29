@@ -4,7 +4,7 @@ CFLAGS += -DREGULAR
 binary = hmac
 
 hmac:
-	$(CC) -o hmac hmac.c teeny-sha1.c $(CFLAGS)
+	$(CC) -o $(binary) hmac.c teeny-sha1.c $(CFLAGS)
 
 .PHONY : clean
 clean :
